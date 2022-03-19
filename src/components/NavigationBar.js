@@ -11,10 +11,10 @@ const NavigationBar = ({ movie }) => {
 		<StyledNavigationBar>
 			<div className="navigation">
 				<Link to={HOME}>
-					<p className={location.pathname === HOME && "current"}>Home</p>
+					<p className={location.pathname === HOME ? "current" : ""}>Home</p>
 				</Link>
 				<Link to={FAVORITES}>
-					<p className={location.pathname === FAVORITES && "current"}>
+					<p className={location.pathname === FAVORITES ? "current" : ""}>
 						Favorites
 					</p>
 				</Link>
@@ -22,12 +22,12 @@ const NavigationBar = ({ movie }) => {
 					<>
 						<p
 							className={
-								location.pathname !== HOME &&
-								location.pathname !== FAVORITES &&
-								"current"
+								location.pathname !== HOME && location.pathname !== FAVORITES
+									? "current"
+									: ""
 							}
 						>
-							{movie}
+							{movie?.original_title}
 						</p>
 					</>
 				)}

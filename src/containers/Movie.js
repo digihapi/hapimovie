@@ -1,12 +1,22 @@
 import { useParams } from "react-router-dom";
 import NavigationBar from "../components/NavigationBar";
+import Spinner from "../components/Spinner";
+import { useMovieFetch } from "../hooks/useMovieFetch";
 
 const Movie = () => {
-	const { movieId } = useParams();
+	const { id } = useParams();
+	const { movie, loading, error } = useMovieFetch(id);
+
 	return (
 		<>
-			<NavigationBar movie={"Matrix"} />
-			<h1>{movieId}</h1>
+			<NavigationBar movie={movie} />
+			{loading ? (
+				<Spinner />
+			) : error ? (
+				<p>An unknown error occurred...</p>
+			) : (
+				<h1>{movie?.original_title}</h1>
+			)}
 		</>
 	);
 };

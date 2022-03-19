@@ -8,12 +8,12 @@ export default {
 	},
 	API: {
 		HOST: "https://api.themoviedb.org/3",
-		KEY: process.env.REACT_APP_API_KEY,
+		API_KEY: process.env.REACT_APP_API_KEY,
 		PATHS: {
-			POPULAR: "popular",
-			SEARCH: "search",
-			MOVIE: "movie",
-			DISCOVER: "discover"
+			POPULAR: "/popular",
+			SEARCH: "/search",
+			MOVIE: "/movie",
+			DISCOVER: "/discover"
 		}
 	},
 	IMAGE: {
