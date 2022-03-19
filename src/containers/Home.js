@@ -4,7 +4,7 @@ const Home = () => {
 	return (
 		<>
 			<NavigationBar />
-			<Link to="/233">Matrix</Link>
+			<Link to="/details/233">Matrix</Link>
 		</>
 	);
 };

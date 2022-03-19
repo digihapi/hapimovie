@@ -1,17 +1,20 @@
 import { Link, useLocation } from "react-router-dom";
 import TMDBLogo from "../assets/images/tmdb.svg";
 import { StyledNavigationBar } from "../styles/StyledNavigationBar";
+import constants from "../config/constants";
 
 const NavigationBar = ({ movie }) => {
 	const location = useLocation();
+	const { HOME, FAVORITES } = constants.APP.PATH;
+
 	return (
 		<StyledNavigationBar>
 			<div className="navigation">
-				<Link to="/">
-					<p className={location.pathname === "/" && "current"}>Home</p>
+				<Link to={HOME}>
+					<p className={location.pathname === HOME && "current"}>Home</p>
 				</Link>
-				<Link to="/favorites">
-					<p className={location.pathname === "/favorites" && "current"}>
+				<Link to={FAVORITES}>
+					<p className={location.pathname === FAVORITES && "current"}>
 						Favorites
 					</p>
 				</Link>
@@ -19,8 +22,8 @@ const NavigationBar = ({ movie }) => {
 					<>
 						<p
 							className={
-								location.pathname !== "/" &&
-								location.pathname !== "/favorites" &&
+								location.pathname !== HOME &&
+								location.pathname !== FAVORITES &&
 								"current"
 							}
 						>
