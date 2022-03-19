@@ -27,7 +27,7 @@ export const useMovieFetch = movieId => {
 		} = constants.API;
 
 		fetchMovie(`${HOST}${MOVIE}/${movieId}?api_key=${API_KEY}`);
-	}, []);
+	}, [movieId]);
 
 	return { movie, loading, error };
 };

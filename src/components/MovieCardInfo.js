@@ -23,7 +23,7 @@ const MovieCardInfo = ({ movie }) => {
 									: NO_POSTER
 							}
 							loading="lazy"
-							alt="Movie picture"
+							alt={movie.title}
 						/>
 					</div>
 					<div className="info-text">

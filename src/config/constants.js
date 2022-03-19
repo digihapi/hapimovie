@@ -1,4 +1,4 @@
-export default {
+const constants = {
 	APP: {
 		PATH: {
 			HOME: "/",
@@ -31,3 +31,5 @@ export default {
 		}
 	}
 };
+
+export default constants;
