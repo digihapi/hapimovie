@@ -37,25 +37,21 @@ export const useMoviesFetch = () => {
 		);
 	};
 
-	const fetchMoviesSortedByVote = (page = 0) => {
-		fetchMovies(
-			`${HOST}${DISCOVER}${MOVIE}?primary_release_year=1999&include_adult=false&sort_by=vote_average.desc&vote_count.gte=50&api_key=${API_KEY}`
-		);
-	};
+	// const fetchMoviesSortedByVote = (page = 0) => {
+	// 	fetchMovies(
+	// 		`${HOST}${DISCOVER}${MOVIE}?primary_release_year=1999&include_adult=false&sort_by=vote_average.desc&vote_count.gte=50&api_key=${API_KEY}`
+	// 	);
+	// };
 
 	const nextPage = e => {
-		fetchMovies(
-			`${HOST}${DISCOVER}${MOVIE}?primary_release_year=1999&include_adult=false&page=${
-				page + 1
-			}&api_key=${API_KEY}`,
-			page + 1
-		);
+		fetchMoviesFrom1999(page + 1);
 		e.preventDefault();
 	};
 
 	useEffect(() => {
 		// By default fetch movies from 1999
 		fetchMoviesFrom1999();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return [{ movies, loading, error, haveNextPage }, nextPage];
