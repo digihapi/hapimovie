@@ -8,6 +8,7 @@ export const StyledNavigationBar = styled.div`
 	background: #444041;
 	color: #fff;
 	position: fixed;
+	top: 0;
 
 	.navigation {
 		max-width: 1280px;

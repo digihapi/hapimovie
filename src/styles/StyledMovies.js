@@ -1,12 +1,5 @@
 import styled from "styled-components";
 
-export const StyledMoviesContent = styled.div`
-	display: flex;
-	flex: 1;
-	flex-wrap: wrap;
-	justify-content: center;
-`;
-
 export const StyledMovies = styled.div`
 	margin: 0 auto;
 	padding: 0 20px;
@@ -14,6 +7,8 @@ export const StyledMovies = styled.div`
 	flex: 1;
 	flex-direction: column;
 	align-items: center;
+	margin-top: 70px;
+
 	h1 {
 		font-family: "Roboto", sans-serif;
 		font-size: 42px;
@@ -22,4 +17,11 @@ export const StyledMovies = styled.div`
 			font-size: 22px;
 		}
 	}
+`;
+
+export const StyledMoviesContent = styled.div`
+	display: flex;
+	flex: 1;
+	flex-wrap: wrap;
+	justify-content: center;
 `;
