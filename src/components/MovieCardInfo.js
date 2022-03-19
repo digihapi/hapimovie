@@ -1,9 +1,30 @@
 import { StyledMovieCardInfo } from "../styles/StyledMovieCardInfo";
 import { Link } from "react-router-dom";
-import { memo } from "react";
+import { memo, useState } from "react";
 import constants from "../config/constants";
+import { UPDATE_FAVORITES, useFavorites } from "../context/favorites";
 
 const MovieCardInfo = ({ movie }) => {
+	const [hover, setHover] = useState(false);
+	const {
+		state: { favorites },
+		dispatch
+	} = useFavorites();
+
+	const switchFavorite = e => {
+		if (favorites[movie.id]) {
+			delete favorites[movie.id];
+		} else {
+			favorites[movie.id] = movie;
+		}
+		dispatch({
+			type: UPDATE_FAVORITES,
+			payload: favorites
+		});
+		setHover(!hover);
+		e.preventDefault();
+	};
+
 	const {
 		HOST,
 		SIZE: {
@@ -25,6 +46,19 @@ const MovieCardInfo = ({ movie }) => {
 							loading="lazy"
 							alt={movie.title}
 						/>
+						<div className="fa-heart-container">
+							<i
+								onClick={switchFavorite}
+								onMouseEnter={() => setHover(true)}
+								onMouseLeave={() => setHover(false)}
+								className={`fa ${
+									(favorites[movie.id] && !hover) ||
+									(!favorites[movie.id] && hover)
+										? "fa-heart"
+										: "fa-heart-o"
+								} fa-3x`}
+							/>
+						</div>
 					</div>
 					<div className="info-text">
 						<h1>{movie.title}</h1>

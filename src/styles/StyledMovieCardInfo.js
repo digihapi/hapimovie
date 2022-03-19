@@ -51,8 +51,24 @@ export const StyledMovieCardInfo = styled.div`
 		}
 	}
 
-	.flex1 {
-		flex: 1;
+	.fa-heart-container {
+		position: relative;
+		width: 0;
+		height: 0;
+	}
+
+	.fa-heart,
+	.fa-heart-o {
+		position: absolute;
+		bottom: 30px;
+		left: 250px;
+		color: red;
+	}
+
+	.fa-heart:hover,
+	.fa-heart-o:hover {
+		transform: scale(1.1);
+		transition: transform 0.25s ease-out;
 	}
 
 	.vote-container {
