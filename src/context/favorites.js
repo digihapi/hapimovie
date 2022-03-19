@@ -19,7 +19,7 @@ function favoritesReducer(state, action) {
 
 function FavoritesProvider({ children }) {
 	const [state, dispatch] = React.useReducer(favoritesReducer, {
-		favorites: JSON.parse(localStorage.getItem("FAVORITES") || "") || {}
+		favorites: JSON.parse(localStorage.getItem("FAVORITES") || "{}")
 	});
 	const value = { state, dispatch };
 	return (
