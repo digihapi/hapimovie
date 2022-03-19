@@ -27,7 +27,7 @@ const NavigationBar = ({ movie }) => {
 									: ""
 							}
 						>
-							{movie?.original_title}
+							{movie?.title}
 						</p>
 					</>
 				)}

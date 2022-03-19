@@ -15,7 +15,7 @@ const Movie = () => {
 			) : error ? (
 				<p>An unknown error occurred...</p>
 			) : (
-				<h1>{movie?.original_title}</h1>
+				<h1>{movie?.title}</h1>
 			)}
 		</>
 	);

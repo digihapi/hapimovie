@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import MovieCardInfo from "../components/MovieCardInfo";
+import Movies from "../components/Movies";
 import NavigationBar from "../components/NavigationBar";
 import Spinner from "../components/Spinner";
 import { useMoviesFetch } from "../hooks/useMoviesFetch";
@@ -13,9 +14,11 @@ const Home = () => {
 			) : error ? (
 				<p>An unknown error occurred...</p>
 			) : (
-				<Link to={`/details/${movies?.[0]?.id}`}>
-					{movies?.[0]?.original_title || "Empty"}
-				</Link>
+				<Movies header="Movies from 1999">
+					{movies?.map((movie, key) => (
+						<MovieCardInfo key={key} movie={movie} />
+					))}
+				</Movies>
 			)}
 		</>
 	);
