@@ -21,14 +21,14 @@ const Movie = () => {
 				<>
 					{movie && <MovieInfo movie={movie} />}
 					{directors && (
-						<Credits header="Director(s)">
+						<Credits header={directors.length > 1 ? "Directors" : "Director"}>
 							{directors.map(director => (
 								<PersonaCardInfo persona={director} />
 							))}
 						</Credits>
 					)}
 					{actors && (
-						<Credits header="Cast">
+						<Credits header="Actors">
 							{actors.map(actor => (
 								<PersonaCardInfo persona={actor} />
 							))}

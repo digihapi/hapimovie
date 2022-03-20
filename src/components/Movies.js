@@ -13,6 +13,8 @@ const Movies = ({ header, marginTop = false, children }) => {
 		e.preventDefault();
 	};
 
+	const handleFocus = event => event.target.select();
+
 	return (
 		<StyledMovies marginTop={marginTop}>
 			<div className="header-content">
@@ -25,6 +27,7 @@ const Movies = ({ header, marginTop = false, children }) => {
 						min="1895"
 						max={new Date().getFullYear()}
 						onChange={onChangeYear}
+						onFocus={handleFocus}
 					/>
 				)}
 			</div>

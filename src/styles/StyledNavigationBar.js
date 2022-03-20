@@ -17,13 +17,9 @@ export const StyledNavigationBar = styled.div`
 		padding: 0 20px;
 		width: 100%;
 
-		p {
-			font-family: "Roboto", sans-serif;
-			font-size: 22px;
-			float: left;
+		i {
 			color: #aaa;
 			padding-right: 10px;
-			text-decoration: none;
 
 			@media screen and (max-width: 500px) {
 				font-size: 16px;
@@ -31,7 +27,6 @@ export const StyledNavigationBar = styled.div`
 		}
 		.current {
 			color: #fff;
-			text-decoration: underline;
 		}
 	}
 	img {

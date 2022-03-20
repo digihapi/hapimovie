@@ -11,24 +11,28 @@ const NavigationBar = ({ movie }) => {
 		<StyledNavigationBar>
 			<div className="navigation">
 				<Link to={HOME}>
-					<p className={location.pathname === HOME ? "current" : ""}>Home</p>
+					<i
+						className={`fa fa-home fa-2x ${
+							location.pathname === HOME ? "current" : ""
+						}`}
+					/>
 				</Link>
 				<Link to={WATCH_LIST}>
-					<p className={location.pathname === WATCH_LIST ? "current" : ""}>
-						Watchlist
-					</p>
+					<i
+						className={`fa fa-eye fa-2x ${
+							location.pathname === WATCH_LIST ? "current" : ""
+						}`}
+					/>
 				</Link>
 				{movie && (
 					<>
-						<p
-							className={
+						<i
+							className={`fa fa-info-circle fa-2x ${
 								location.pathname !== HOME && location.pathname !== WATCH_LIST
 									? "current"
 									: ""
-							}
-						>
-							{movie?.title}
-						</p>
+							}`}
+						/>
 					</>
 				)}
 			</div>
