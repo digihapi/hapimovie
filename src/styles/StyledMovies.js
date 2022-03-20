@@ -23,6 +23,7 @@ export const StyledMovies = styled.div`
 
 		input[type="number"] {
 			margin-left: 5px;
+			min-width: 20px;
 			font-family: "Roboto", sans-serif;
 			font-size: 42px;
 			@media screen and (max-width: 500px) {

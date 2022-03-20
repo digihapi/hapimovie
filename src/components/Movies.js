@@ -9,7 +9,7 @@ const Movies = ({ header, year, onChange, children }) => {
 					<input
 						type="number"
 						value={year}
-						min="1885"
+						min="1895"
 						max={new Date().getFullYear()}
 						onChange={onChange}
 					/>
