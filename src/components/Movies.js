@@ -7,6 +7,7 @@ const Movies = ({ header, children }) => {
 	const { DEFAULT_YEAR } = constants.API;
 
 	const onChangeYear = e => {
+		searchParams.delete("page");
 		searchParams.set("year", e.target.value);
 		setSearchParams(searchParams);
 		e.preventDefault();

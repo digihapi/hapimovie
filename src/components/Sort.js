@@ -6,6 +6,7 @@ const Sort = () => {
 
 	const onClick = (e, sortBy) => {
 		const sortByPrefix = sortBy.substring(0, sortBy.indexOf("."));
+		searchParams.delete("page");
 		if (sortBy === "default") {
 			searchParams.delete("sort_by");
 		} else if (searchParams.get("sort_by")?.startsWith(sortByPrefix)) {

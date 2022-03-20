@@ -7,7 +7,6 @@ export const useMoviesFetch = () => {
 	const [searchParams] = useSearchParams();
 
 	const [movies, setMovies] = useState([]);
-	const [page, setPage] = useState(1);
 	const [haveNextPage, setHaveNextPage] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
@@ -15,6 +14,7 @@ export const useMoviesFetch = () => {
 	// By default fetch movies from 1999
 	const year = searchParams.get("year") || DEFAULT_YEAR;
 	const sortBy = searchParams.get("sort_by") || "";
+	const page = searchParams.get("page") || 1;
 
 	const {
 		HOST,
@@ -22,15 +22,14 @@ export const useMoviesFetch = () => {
 		PATHS: { MOVIE, DISCOVER }
 	} = constants.API;
 
-	const fetchMovies = async (url, page) => {
+	const fetchMovies = async (url, p = 1) => {
 		setError(null);
 		setLoading(true);
 		try {
 			const result = await (await fetch(url)).json();
 			setMovies(previous =>
-				page === 1 ? [...result.results] : [...previous, ...result.results]
+				p === 1 ? [...result.results] : [...previous, ...result.results]
 			);
-			setPage(result.page);
 			setHaveNextPage(result.page < result.total_pages);
 		} catch (error) {
 			setError(error);
@@ -38,26 +37,26 @@ export const useMoviesFetch = () => {
 		setLoading(false);
 	};
 
-	const fetchDiscoverMovies = (page = 1) => {
+	useEffect(() => {
 		let url = `${HOST}${DISCOVER}${MOVIE}?primary_release_year=${year}&include_adult=false&page=${page}&api_key=${API_KEY}`;
 
-		// if (sortBy.startsWith("vote_average")) {
-		// } else
 		if (sortBy) {
 			url += `&sort_by=${sortBy}&vote_count.gte=50`;
 		}
-		fetchMovies(url, page);
-	};
 
-	const nextPage = e => {
-		fetchDiscoverMovies(page + 1);
-		e.preventDefault();
-	};
+		if (page > 1 && movies.length === 0) {
+			(async () => {
+				for (let p = 1; p <= page; p++) {
+					url = `${HOST}${DISCOVER}${MOVIE}?primary_release_year=${year}&include_adult=false&page=${p}&api_key=${API_KEY}`;
+					await fetchMovies(url, p);
+				}
+			})();
+		} else {
+			fetchMovies(url, page);
+		}
 
-	useEffect(() => {
-		fetchDiscoverMovies();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [year, sortBy]);
+	}, [year, sortBy, page]);
 
-	return [{ movies, loading, error, haveNextPage }, nextPage];
+	return { movies, loading, error, haveNextPage };
 };

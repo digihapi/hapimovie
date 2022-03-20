@@ -7,7 +7,7 @@ import Spinner from "../components/Spinner";
 import { useMoviesFetch } from "../hooks/useMoviesFetch";
 
 const Home = () => {
-	const [{ movies, loading, error, haveNextPage }, nextPage] = useMoviesFetch();
+	const { movies, loading, error, haveNextPage } = useMoviesFetch();
 
 	return (
 		<>
@@ -23,7 +23,7 @@ const Home = () => {
 				</Movies>
 			)}
 			{loading && <Spinner />}
-			{haveNextPage && <NextPageButton onClick={nextPage} />}
+			{haveNextPage && <NextPageButton />}
 		</>
 	);
 };
