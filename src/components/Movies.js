@@ -1,9 +1,20 @@
 import { StyledMovies, StyledMoviesContent } from "../styles/StyledMovies";
 
-const Movies = ({ header, children }) => {
+const Movies = ({ header, year, onChange, children }) => {
 	return (
 		<StyledMovies>
-			<h1>{header}</h1>
+			<div className="header-content">
+				<h1>{header}</h1>
+				{year && (
+					<input
+						type="number"
+						value={year}
+						min="1885"
+						max={new Date().getFullYear()}
+						onChange={onChange}
+					/>
+				)}
+			</div>
 			<StyledMoviesContent>{children}</StyledMoviesContent>
 		</StyledMovies>
 	);

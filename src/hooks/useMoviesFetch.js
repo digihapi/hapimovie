@@ -7,6 +7,7 @@ export const useMoviesFetch = () => {
 	const [haveNextPage, setHaveNextPage] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
+	const [year, setYear] = useState("1999");
 
 	const {
 		HOST,
@@ -30,9 +31,9 @@ export const useMoviesFetch = () => {
 		setLoading(false);
 	};
 
-	const fetchMoviesFrom1999 = (page = 1) => {
+	const fetchDiscoverMovies = (page = 1) => {
 		fetchMovies(
-			`${HOST}${DISCOVER}${MOVIE}?primary_release_year=1999&include_adult=false&page=${page}&api_key=${API_KEY}`,
+			`${HOST}${DISCOVER}${MOVIE}?primary_release_year=${year}&include_adult=false&page=${page}&api_key=${API_KEY}`,
 			page
 		);
 	};
@@ -44,15 +45,24 @@ export const useMoviesFetch = () => {
 	// };
 
 	const nextPage = e => {
-		fetchMoviesFrom1999(page + 1);
+		fetchDiscoverMovies(page + 1);
+		e.preventDefault();
+	};
+
+	const onChangeYear = e => {
+		setYear(e.target.value);
 		e.preventDefault();
 	};
 
 	useEffect(() => {
 		// By default fetch movies from 1999
-		fetchMoviesFrom1999();
+		fetchDiscoverMovies();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+	}, [year]);
 
-	return [{ movies, loading, error, haveNextPage }, nextPage];
+	return [
+		{ movies, loading, error, haveNextPage, year },
+		nextPage,
+		onChangeYear
+	];
 };

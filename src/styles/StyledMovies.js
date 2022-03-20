@@ -9,12 +9,25 @@ export const StyledMovies = styled.div`
 	align-items: center;
 	margin-top: 70px;
 
-	h1 {
-		font-family: "Roboto", sans-serif;
-		font-size: 42px;
+	.header-content {
+		display: flex;
+		flex-direction: row;
 
-		@media screen and (max-width: 500px) {
-			font-size: 22px;
+		h1 {
+			font-family: "Roboto", sans-serif;
+			font-size: 42px;
+			@media screen and (max-width: 500px) {
+				font-size: 22px;
+			}
+		}
+
+		input[type="number"] {
+			margin-left: 5px;
+			font-family: "Roboto", sans-serif;
+			font-size: 42px;
+			@media screen and (max-width: 500px) {
+				font-size: 22px;
+			}
 		}
 	}
 `;

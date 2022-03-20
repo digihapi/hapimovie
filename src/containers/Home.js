@@ -6,14 +6,18 @@ import Spinner from "../components/Spinner";
 import { useMoviesFetch } from "../hooks/useMoviesFetch";
 
 const Home = () => {
-	const [{ movies, loading, error, haveNextPage }, nextPage] = useMoviesFetch();
+	const [
+		{ movies, loading, error, haveNextPage, year },
+		nextPage,
+		onChangeYear
+	] = useMoviesFetch();
 	return (
 		<>
 			<NavigationBar />
 			{error ? (
 				<p>An unknown error occurred...</p>
 			) : (
-				<Movies header="Movies from 1999">
+				<Movies header="Movies from" year={year} onChange={onChangeYear}>
 					{movies?.map((movie, key) => (
 						<MovieCardInfo key={key} movie={movie} />
 					))}
