@@ -20,6 +20,7 @@ const Movies = ({ header, marginTop = false, children }) => {
 				{header === "Movies from" && (
 					<input
 						type="number"
+						pattern="[0-9]*"
 						value={searchParams.get("year") || DEFAULT_YEAR}
 						min="1895"
 						max={new Date().getFullYear()}
