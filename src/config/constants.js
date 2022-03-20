@@ -12,10 +12,10 @@ const constants = {
 		API_KEY:
 			process.env.REACT_APP_API_KEY || "0c7cee06c7d925a997b4129b84072f51",
 		PATHS: {
-			POPULAR: "/popular",
 			SEARCH: "/search",
 			MOVIE: "/movie",
-			DISCOVER: "/discover"
+			DISCOVER: "/discover",
+			CREDITS: "/credits"
 		}
 	},
 	IMAGE: {

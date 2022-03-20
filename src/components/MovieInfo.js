@@ -54,6 +54,12 @@ const MovieInfo = ({ movie }) => {
 					<div className="movieinfo-text">
 						<h1>{movie.title}</h1>
 						<p>{movie.overview}</p>
+						{movie.genres && (
+							<p>
+								{movie.genres.length > 0 ? "Genres: " : "Genre: "}
+								{movie.genres.map(genre => genre.name).join(", ")}
+							</p>
+						)}
 					</div>
 					<div className="flex1" />
 					<div className="icon-content">
