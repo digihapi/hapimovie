@@ -12,6 +12,7 @@ const WatchList = () => {
 		<>
 			<NavigationBar />
 			<Movies
+				marginTop={true}
 				header={
 					watchList && Object.keys(watchList).length > 0
 						? "My watch list"

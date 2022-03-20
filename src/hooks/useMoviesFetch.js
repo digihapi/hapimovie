@@ -15,12 +15,7 @@ export const useMoviesFetch = () => {
 	const year = searchParams.get("year") || DEFAULT_YEAR;
 	const sortBy = searchParams.get("sort_by") || "";
 	const page = searchParams.get("page") || 1;
-
-	const {
-		HOST,
-		API_KEY,
-		PATHS: { MOVIE, DISCOVER }
-	} = constants.API;
+	const query = searchParams.get("query");
 
 	const fetchMovies = async (url, p = 1) => {
 		setError(null);
@@ -38,7 +33,18 @@ export const useMoviesFetch = () => {
 	};
 
 	useEffect(() => {
-		let url = `${HOST}${DISCOVER}${MOVIE}?primary_release_year=${year}&include_adult=false&page=${page}&api_key=${API_KEY}`;
+		const {
+			HOST,
+			API_KEY,
+			PATHS: { SEARCH, MOVIE, DISCOVER }
+		} = constants.API;
+
+		let url;
+		if (query) {
+			url = `${HOST}${SEARCH}${MOVIE}?include_adult=false&page=${page}&query=${query}&api_key=${API_KEY}`;
+		} else {
+			url = `${HOST}${DISCOVER}${MOVIE}?primary_release_year=${year}&include_adult=false&page=${page}&api_key=${API_KEY}`;
+		}
 
 		if (sortBy) {
 			url += `&sort_by=${sortBy}&vote_count.gte=50`;
@@ -56,7 +62,7 @@ export const useMoviesFetch = () => {
 		}
 
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [year, sortBy, page]);
+	}, [year, sortBy, page, query]);
 
 	return { movies, loading, error, haveNextPage };
 };

@@ -7,7 +7,7 @@ export const StyledMovies = styled.div`
 	flex: 1;
 	flex-direction: column;
 	align-items: center;
-	margin-top: 70px;
+	margin-top: ${props => (props.marginTop ? "70px" : "0")};
 
 	.header-content {
 		display: flex;

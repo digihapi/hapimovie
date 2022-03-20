@@ -2,7 +2,7 @@ import { StyledMovies, StyledMoviesContent } from "../styles/StyledMovies";
 import { useSearchParams } from "react-router-dom";
 import constants from "../config/constants";
 
-const Movies = ({ header, children }) => {
+const Movies = ({ header, marginTop = false, children }) => {
 	const [searchParams, setSearchParams] = useSearchParams();
 	const { DEFAULT_YEAR } = constants.API;
 
@@ -14,7 +14,7 @@ const Movies = ({ header, children }) => {
 	};
 
 	return (
-		<StyledMovies>
+		<StyledMovies marginTop={marginTop}>
 			<div className="header-content">
 				<h1>{header}</h1>
 				{header === "Movies from" && (
