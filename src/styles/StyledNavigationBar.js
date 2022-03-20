@@ -20,10 +20,6 @@ export const StyledNavigationBar = styled.div`
 		i {
 			color: #aaa;
 			padding-right: 10px;
-
-			@media screen and (max-width: 500px) {
-				font-size: 16px;
-			}
 		}
 		.current {
 			color: #fff;
