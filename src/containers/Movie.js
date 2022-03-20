@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import MovieInfo from "../components/MovieInfo";
 import NavigationBar from "../components/NavigationBar";
 import Spinner from "../components/Spinner";
 import { useMovieFetch } from "../hooks/useMovieFetch";
@@ -15,7 +16,7 @@ const Movie = () => {
 			) : error ? (
 				<p>An unknown error occurred...</p>
 			) : (
-				<h1>{movie?.title}</h1>
+				movie && <MovieInfo movie={movie} />
 			)}
 		</>
 	);
