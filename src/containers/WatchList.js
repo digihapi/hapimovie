@@ -11,8 +11,15 @@ const WatchList = () => {
 	return (
 		<>
 			<NavigationBar />
-			<Movies header="My watch list">
+			<Movies
+				header={
+					watchList && Object.keys(watchList).length > 0
+						? "My watch list"
+						: "No watch list"
+				}
+			>
 				{watchList &&
+					Object.keys(watchList).length > 0 &&
 					Object.values(watchList).map((movie, key) => (
 						<MovieCardInfo key={key} movie={movie} />
 					))}

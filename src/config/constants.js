@@ -7,8 +7,10 @@ const constants = {
 		}
 	},
 	API: {
+		DEFAULT_YEAR: "1999",
 		HOST: "https://api.themoviedb.org/3",
-		API_KEY: process.env.REACT_APP_API_KEY,
+		API_KEY:
+			process.env.REACT_APP_API_KEY || "0c7cee06c7d925a997b4129b84072f51",
 		PATHS: {
 			POPULAR: "/popular",
 			SEARCH: "/search",

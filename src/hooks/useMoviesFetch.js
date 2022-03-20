@@ -1,13 +1,20 @@
 import { useState, useEffect } from "react";
 import constants from "../config/constants";
+import { useSearchParams } from "react-router-dom";
 
 export const useMoviesFetch = () => {
+	const { DEFAULT_YEAR } = constants.API;
+	const [searchParams] = useSearchParams();
+
 	const [movies, setMovies] = useState([]);
 	const [page, setPage] = useState(1);
 	const [haveNextPage, setHaveNextPage] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
-	const [year, setYear] = useState("1999");
+
+	// By default fetch movies from 1999
+	const year = searchParams.get("year") || DEFAULT_YEAR;
+	const sortBy = searchParams.get("sort_by") || "";
 
 	const {
 		HOST,
@@ -32,37 +39,25 @@ export const useMoviesFetch = () => {
 	};
 
 	const fetchDiscoverMovies = (page = 1) => {
-		fetchMovies(
-			`${HOST}${DISCOVER}${MOVIE}?primary_release_year=${year}&include_adult=false&page=${page}&api_key=${API_KEY}`,
-			page
-		);
-	};
+		let url = `${HOST}${DISCOVER}${MOVIE}?primary_release_year=${year}&include_adult=false&page=${page}&api_key=${API_KEY}`;
 
-	// const fetchMoviesSortedByVote = (page = 0) => {
-	// 	fetchMovies(
-	// 		`${HOST}${DISCOVER}${MOVIE}?primary_release_year=1999&include_adult=false&sort_by=vote_average.desc&vote_count.gte=50&api_key=${API_KEY}`
-	// 	);
-	// };
+		// if (sortBy.startsWith("vote_average")) {
+		// } else
+		if (sortBy) {
+			url += `&sort_by=${sortBy}&vote_count.gte=50`;
+		}
+		fetchMovies(url, page);
+	};
 
 	const nextPage = e => {
 		fetchDiscoverMovies(page + 1);
 		e.preventDefault();
 	};
 
-	const onChangeYear = e => {
-		setYear(e.target.value);
-		e.preventDefault();
-	};
-
 	useEffect(() => {
-		// By default fetch movies from 1999
 		fetchDiscoverMovies();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [year]);
+	}, [year, sortBy]);
 
-	return [
-		{ movies, loading, error, haveNextPage, year },
-		nextPage,
-		onChangeYear
-	];
+	return [{ movies, loading, error, haveNextPage }, nextPage];
 };

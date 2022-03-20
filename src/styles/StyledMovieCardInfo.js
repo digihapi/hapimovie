@@ -91,6 +91,10 @@ export const StyledMovieCardInfo = styled.div`
 		margin: 0px 0 0 0;
 	}
 
+	.flex1 {
+		flex: 1;
+	}
+
 	@keyframes animateMovieinfo {
 		from {
 			opacity: 0;

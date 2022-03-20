@@ -1,17 +1,28 @@
 import { StyledMovies, StyledMoviesContent } from "../styles/StyledMovies";
+import { useSearchParams } from "react-router-dom";
+import constants from "../config/constants";
 
-const Movies = ({ header, year, onChange, children }) => {
+const Movies = ({ header, children }) => {
+	const [searchParams, setSearchParams] = useSearchParams();
+	const { DEFAULT_YEAR } = constants.API;
+
+	const onChangeYear = e => {
+		searchParams.set("year", e.target.value);
+		setSearchParams(searchParams);
+		e.preventDefault();
+	};
+
 	return (
 		<StyledMovies>
 			<div className="header-content">
 				<h1>{header}</h1>
-				{year && (
+				{header === "Movies from" && (
 					<input
 						type="number"
-						value={year}
+						value={searchParams.get("year") || DEFAULT_YEAR}
 						min="1895"
 						max={new Date().getFullYear()}
-						onChange={onChange}
+						onChange={onChangeYear}
 					/>
 				)}
 			</div>
