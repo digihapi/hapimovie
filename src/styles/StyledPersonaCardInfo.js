@@ -3,6 +3,10 @@ import styled from "styled-components";
 export const StyledPersonaCardInfo = styled.div`
 	margin: 10px;
 
+	@media screen and (max-width: 500px) {
+		margin: 10px 5px;
+	}
+
 	.info-content {
 		display: flex;
 		flex-direction: column;
