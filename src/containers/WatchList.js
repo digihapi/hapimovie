@@ -1,19 +1,19 @@
 import MovieCardInfo from "../components/MovieCardInfo";
 import Movies from "../components/Movies";
 import NavigationBar from "../components/NavigationBar";
-import { useFavorites } from "../context/favorites";
+import { useWatchList } from "../context/watchList";
 
-const Favorites = () => {
+const WatchList = () => {
 	const {
-		state: { favorites }
-	} = useFavorites();
+		state: { watchList }
+	} = useWatchList();
 
 	return (
 		<>
 			<NavigationBar />
-			<Movies header="My favorite playlist">
-				{favorites &&
-					Object.values(favorites).map((movie, key) => (
+			<Movies header="My watch list">
+				{watchList &&
+					Object.values(watchList).map((movie, key) => (
 						<MovieCardInfo key={key} movie={movie} />
 					))}
 			</Movies>
@@ -21,4 +21,4 @@ const Favorites = () => {
 	);
 };
 
-export default Favorites;
+export default WatchList;

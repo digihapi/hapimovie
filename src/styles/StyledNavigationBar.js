@@ -8,6 +8,7 @@ export const StyledNavigationBar = styled.div`
 	background: #444041;
 	color: #fff;
 	position: fixed;
+	z-index: 999;
 	top: 0;
 
 	.navigation {

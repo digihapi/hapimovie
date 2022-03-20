@@ -2,24 +2,24 @@ import { StyledMovieCardInfo } from "../styles/StyledMovieCardInfo";
 import { Link } from "react-router-dom";
 import { memo, useState } from "react";
 import constants from "../config/constants";
-import { UPDATE_FAVORITES, useFavorites } from "../context/favorites";
+import { UPDATE_WATCH_LIST, useWatchList } from "../context/watchList";
 
 const MovieCardInfo = ({ movie }) => {
 	const [hover, setHover] = useState(false);
 	const {
-		state: { favorites },
+		state: { watchList },
 		dispatch
-	} = useFavorites();
+	} = useWatchList();
 
-	const switchFavorite = e => {
-		if (favorites[movie.id]) {
-			delete favorites[movie.id];
+	const switchWatch = e => {
+		if (watchList[movie.id]) {
+			delete watchList[movie.id];
 		} else {
-			favorites[movie.id] = movie;
+			watchList[movie.id] = movie;
 		}
 		dispatch({
-			type: UPDATE_FAVORITES,
-			payload: favorites
+			type: UPDATE_WATCH_LIST,
+			payload: watchList
 		});
 		setHover(!hover);
 		e.preventDefault();
@@ -46,16 +46,16 @@ const MovieCardInfo = ({ movie }) => {
 							loading="lazy"
 							alt={movie.title}
 						/>
-						<div className="fa-heart-container">
+						<div className="fa-eye-content">
 							<i
-								onClick={switchFavorite}
+								onClick={switchWatch}
 								onMouseEnter={() => setHover(true)}
 								onMouseLeave={() => setHover(false)}
 								className={`fa ${
-									(favorites[movie.id] && !hover) ||
-									(!favorites[movie.id] && hover)
-										? "fa-heart"
-										: "fa-heart-o"
+									(watchList[movie.id] && !hover) ||
+									(!watchList[movie.id] && hover)
+										? "fa-eye"
+										: "fa-eye-slash"
 								} fa-3x`}
 							/>
 						</div>
@@ -64,7 +64,7 @@ const MovieCardInfo = ({ movie }) => {
 						<h1>{movie.title}</h1>
 						<h3>{new Date(movie.release_date).toLocaleDateString()}</h3>
 						<div className="flex1" />
-						<div className="vote-container">
+						<div className="vote-content">
 							<div>
 								<div className="vote">{movie.vote_average}</div>
 							</div>

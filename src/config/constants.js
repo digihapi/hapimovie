@@ -2,7 +2,7 @@ const constants = {
 	APP: {
 		PATH: {
 			HOME: "/",
-			FAVORITES: "/favorites",
+			WATCH_LIST: "/watchlist",
 			MOVIE_DETAILS: "/details/:id"
 		}
 	},

@@ -51,27 +51,27 @@ export const StyledMovieCardInfo = styled.div`
 		}
 	}
 
-	.fa-heart-container {
+	.fa-eye-content {
 		position: relative;
 		width: 0;
 		height: 0;
 	}
 
-	.fa-heart,
-	.fa-heart-o {
+	.fa-eye,
+	.fa-eye-slash {
 		position: absolute;
 		bottom: 30px;
 		left: 250px;
-		color: red;
+		color: #fff;
 	}
 
-	.fa-heart:hover,
-	.fa-heart-o:hover {
-		transform: scale(1.1);
+	.fa-eye:hover,
+	.fa-eye-slash:hover {
+		transform: scale(1.2);
 		transition: transform 0.25s ease-out;
 	}
 
-	.vote-container {
+	.vote-content {
 		display: flex;
 		flex-direction: row-reverse;
 	}
@@ -90,19 +90,6 @@ export const StyledMovieCardInfo = styled.div`
 		border-radius: 35px;
 		margin: 0px 0 0 0;
 	}
-
-	.director {
-		margin: 0 0 0 40px;
-
-		p {
-			margin: 0;
-		}
-	}
-
-	/* @media screen and (max-width: 768px) {
-		min-height: 600px;
-		height: auto;
-	} */
 
 	@keyframes animateMovieinfo {
 		from {

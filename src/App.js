@@ -1,20 +1,20 @@
 import Home from "./containers/Home";
-import Favorites from "./containers/Favorites";
+import WatchList from "./containers/WatchList";
 import Movie from "./containers/Movie";
 import { Routes, Route } from "react-router-dom";
 import constants from "./config/constants";
-import { FavoritesProvider } from "./context/favorites";
+import { WatchListProvider } from "./context/watchList";
 
 function App() {
-	const { HOME, FAVORITES, MOVIE_DETAILS } = constants.APP.PATH;
+	const { HOME, WATCH_LIST, MOVIE_DETAILS } = constants.APP.PATH;
 	return (
-		<FavoritesProvider>
+		<WatchListProvider>
 			<Routes>
 				<Route path={HOME} element={<Home />} />
-				<Route path={FAVORITES} element={<Favorites />} />
+				<Route path={WATCH_LIST} element={<WatchList />} />
 				<Route path={MOVIE_DETAILS} element={<Movie />} />
 			</Routes>
-		</FavoritesProvider>
+		</WatchListProvider>
 	);
 }
 
