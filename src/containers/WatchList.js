@@ -1,3 +1,4 @@
+import GoToTop from "../components/GoToTop";
 import MovieCardInfo from "../components/MovieCardInfo";
 import Movies from "../components/Movies";
 import NavigationBar from "../components/NavigationBar";
@@ -24,6 +25,7 @@ const WatchList = () => {
 					Object.values(watchList).map((movie, key) => (
 						<MovieCardInfo key={key} movie={movie} />
 					))}
+				<GoToTop />
 			</Movies>
 		</>
 	);

@@ -1,4 +1,5 @@
 import { useSearchParams } from "react-router-dom";
+import GoToTop from "../components/GoToTop";
 import MovieCardInfo from "../components/MovieCardInfo";
 import Movies from "../components/Movies";
 import NavigationBar from "../components/NavigationBar";
@@ -32,6 +33,7 @@ const Home = () => {
 					{movies?.map((movie, key) => (
 						<MovieCardInfo key={key} movie={movie} />
 					))}
+					<GoToTop />
 				</Movies>
 			)}
 			{loading && <Spinner />}

@@ -6,6 +6,7 @@ import PersonaCardInfo from "../components/PersonaCardInfo";
 import Spinner from "../components/Spinner";
 import { useMovieFetch } from "../hooks/useMovieFetch";
 import Review from "../components/Review";
+import GoToTop from "../components/GoToTop";
 
 const Movie = () => {
 	const { id } = useParams();
@@ -43,6 +44,7 @@ const Movie = () => {
 							))}
 						</Section>
 					)}
+					<GoToTop />
 				</>
 			)}
 		</>
