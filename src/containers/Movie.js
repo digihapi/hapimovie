@@ -1,14 +1,16 @@
 import { useParams } from "react-router-dom";
-import Credits from "../components/Credits";
+import Section from "../components/Section";
 import MovieInfo from "../components/MovieInfo";
 import NavigationBar from "../components/NavigationBar";
 import PersonaCardInfo from "../components/PersonaCardInfo";
 import Spinner from "../components/Spinner";
 import { useMovieFetch } from "../hooks/useMovieFetch";
+import Review from "../components/Review";
 
 const Movie = () => {
 	const { id } = useParams();
-	const { movie, directors, actors, loading, error } = useMovieFetch(id);
+	const { movie, directors, actors, reviews, loading, error } =
+		useMovieFetch(id);
 
 	return (
 		<>
@@ -21,18 +23,25 @@ const Movie = () => {
 				<>
 					{movie && <MovieInfo movie={movie} />}
 					{directors && (
-						<Credits header={directors.length > 1 ? "Directors" : "Director"}>
+						<Section header={directors.length > 1 ? "Directors" : "Director"}>
 							{directors.map(director => (
 								<PersonaCardInfo persona={director} />
 							))}
-						</Credits>
+						</Section>
 					)}
 					{actors && (
-						<Credits header="Actors">
+						<Section header="Actors">
 							{actors.map(actor => (
 								<PersonaCardInfo persona={actor} />
 							))}
-						</Credits>
+						</Section>
+					)}
+					{reviews && reviews.length > 0 && (
+						<Section header="Reviews">
+							{reviews.map(review => (
+								<Review review={review} />
+							))}
+						</Section>
 					)}
 				</>
 			)}

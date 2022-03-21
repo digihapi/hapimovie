@@ -5,6 +5,7 @@ export const useMovieFetch = movieId => {
 	const [movie, setMovie] = useState(null);
 	const [directors, setDirectors] = useState([]);
 	const [actors, setActors] = useState([]);
+	const [reviews, setReviews] = useState([]);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
 
@@ -21,6 +22,8 @@ export const useMovieFetch = movieId => {
 			);
 			setDirectors(directorsJobs);
 			setActors(creditsResult.cast);
+			const reviewsResult = await (await fetch(urls[2])).json();
+			setReviews(reviewsResult.results);
 		} catch (error) {
 			setError(error);
 		}
@@ -31,14 +34,15 @@ export const useMovieFetch = movieId => {
 		const {
 			HOST,
 			API_KEY,
-			PATHS: { MOVIE, CREDITS }
+			PATHS: { MOVIE, CREDITS, REVIEWS }
 		} = constants.API;
 
 		fetchMovie([
 			`${HOST}${MOVIE}/${movieId}?api_key=${API_KEY}`,
-			`${HOST}${MOVIE}/${movieId}/${CREDITS}?api_key=${API_KEY}`
+			`${HOST}${MOVIE}/${movieId}/${CREDITS}?api_key=${API_KEY}`,
+			`${HOST}${MOVIE}/${movieId}/${REVIEWS}?api_key=${API_KEY}`
 		]);
 	}, [movieId]);
 
-	return { movie, directors, actors, loading, error };
+	return { movie, directors, actors, reviews, loading, error };
 };

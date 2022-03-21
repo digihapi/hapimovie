@@ -15,7 +15,8 @@ const constants = {
 			SEARCH: "/search",
 			MOVIE: "/movie",
 			DISCOVER: "/discover",
-			CREDITS: "/credits"
+			CREDITS: "/credits",
+			REVIEWS: "/reviews"
 		}
 	},
 	IMAGE: {

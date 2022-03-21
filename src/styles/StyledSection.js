@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledCredits = styled.div`
+export const StyledSection = styled.div`
 	margin: 0 auto;
 	padding: 0 10px;
 	display: flex;
@@ -22,7 +22,7 @@ export const StyledCredits = styled.div`
 	}
 `;
 
-export const StyledCreditsContent = styled.div`
+export const StyledSectionContent = styled.div`
 	display: flex;
 	flex: 1;
 	flex-wrap: wrap;
