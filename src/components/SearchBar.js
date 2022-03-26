@@ -22,7 +22,6 @@ const SearchBar = () => {
 		const searchParams = new URLSearchParams();
 		if (inputValue) {
 			searchParams.set("query", inputValue);
-			searchParams.delete("primary_release_year");
 		}
 		setSearchParams(searchParams);
 	};

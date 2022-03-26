@@ -18,7 +18,7 @@ const Home = () => {
 		<>
 			<NavigationBar />
 			<SearchBar />
-			<Genres />
+			{!searchParams.get("query") && <Genres />}
 			{error ? (
 				<p>An unknown error occurred...</p>
 			) : (
