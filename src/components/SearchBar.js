@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import {
 	StyledSearchBar,
@@ -7,17 +7,22 @@ import {
 
 const SearchBar = () => {
 	const [inputValue, setInputValue] = useState("");
-	const [, setSearchParams] = useSearchParams();
+	const [searchParams, setSearchParams] = useSearchParams();
 
 	const onChange = e => {
 		setInputValue(e.target.value);
 		e.preventDefault();
 	};
 
+	useEffect(() => {
+		setInputValue(searchParams.get("query") || "");
+	}, [searchParams]);
+
 	const doSearch = () => {
 		const searchParams = new URLSearchParams();
 		if (inputValue) {
 			searchParams.set("query", inputValue);
+			searchParams.delete("primary_release_year");
 		}
 		setSearchParams(searchParams);
 	};

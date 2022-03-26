@@ -1,17 +1,28 @@
 import { StyledMovies, StyledMoviesContent } from "../styles/StyledMovies";
 import { useSearchParams } from "react-router-dom";
 import constants from "../config/constants";
+import { useEffect } from "react";
 
 const Movies = ({ header, marginTop = false, children }) => {
 	const [searchParams, setSearchParams] = useSearchParams();
-	const { DEFAULT_YEAR } = constants.API;
 
 	const onChangeYear = e => {
 		searchParams.delete("page");
-		searchParams.set("year", e.target.value);
+		searchParams.set("primary_release_year", e.target.value);
 		setSearchParams(searchParams);
 		e.preventDefault();
 	};
+
+	useEffect(() => {
+		if (
+			!searchParams.get("primary_release_year") &&
+			!searchParams.get("query")
+		) {
+			const { DEFAULT_YEAR } = constants.API;
+			searchParams.set("primary_release_year", DEFAULT_YEAR);
+			setSearchParams(searchParams);
+		}
+	}, [searchParams, setSearchParams]);
 
 	const handleFocus = event => event.target.select();
 
@@ -23,7 +34,7 @@ const Movies = ({ header, marginTop = false, children }) => {
 					<input
 						type="number"
 						pattern="[0-9]*"
-						value={searchParams.get("year") || DEFAULT_YEAR}
+						value={searchParams.get("primary_release_year")}
 						min="1895"
 						max={new Date().getFullYear()}
 						onChange={onChangeYear}

@@ -1,4 +1,5 @@
 import { useSearchParams } from "react-router-dom";
+import { Genres } from "../components/Genres";
 import GoToTop from "../components/GoToTop";
 import MovieCardInfo from "../components/MovieCardInfo";
 import Movies from "../components/Movies";
@@ -17,6 +18,7 @@ const Home = () => {
 		<>
 			<NavigationBar />
 			<SearchBar />
+			<Genres />
 			{error ? (
 				<p>An unknown error occurred...</p>
 			) : (

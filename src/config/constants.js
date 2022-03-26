@@ -16,7 +16,9 @@ const constants = {
 			MOVIE: "/movie",
 			DISCOVER: "/discover",
 			CREDITS: "/credits",
-			REVIEWS: "/reviews"
+			REVIEWS: "/reviews",
+			GENRE: "/genre",
+			LIST: "/list"
 		}
 	},
 	IMAGE: {
