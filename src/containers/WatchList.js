@@ -14,13 +14,15 @@ const WatchList = () => {
 	const { width } = useWindowDimensions();
 
 	const handleDragEnd = result => {
-		const movie = watchList[result.source.index];
-		watchList.splice(result.source.index, 1);
-		watchList.splice(result.destination.index, 0, movie);
-		dispatch({
-			type: UPDATE_WATCH_LIST,
-			payload: watchList
-		});
+		if (result.source && result.destination) {
+			const movie = watchList[result.source.index];
+			watchList.splice(result.source.index, 1);
+			watchList.splice(result.destination.index, 0, movie);
+			dispatch({
+				type: UPDATE_WATCH_LIST,
+				payload: watchList
+			});
+		}
 	};
 
 	return (
@@ -62,9 +64,9 @@ const WatchList = () => {
 											)}
 										</Draggable>
 									))}
-								{droppableProvided.placeholder}
 								<GoToTop />
 							</Movies>
+							{droppableProvided.placeholder}
 						</div>
 					)}
 				</Droppable>
