@@ -12,6 +12,7 @@ const Movies = ({ header, marginTop = false, children }) => {
 		setSearchParams(searchParams);
 		e.preventDefault();
 	};
+	const { DEFAULT_YEAR } = constants.API;
 
 	useEffect(() => {
 		if (
@@ -22,7 +23,7 @@ const Movies = ({ header, marginTop = false, children }) => {
 			searchParams.set("primary_release_year", DEFAULT_YEAR);
 			setSearchParams(searchParams);
 		}
-	}, [searchParams, setSearchParams]);
+	}, [searchParams, setSearchParams, DEFAULT_YEAR]);
 
 	const handleFocus = event => event.target.select();
 
@@ -34,7 +35,7 @@ const Movies = ({ header, marginTop = false, children }) => {
 					<input
 						type="number"
 						pattern="[0-9]*"
-						value={searchParams.get("primary_release_year")}
+						value={searchParams.get("primary_release_year") || DEFAULT_YEAR}
 						min="1895"
 						max={new Date().getFullYear()}
 						onChange={onChangeYear}

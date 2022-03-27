@@ -26,21 +26,21 @@ const Movie = () => {
 					{directors && (
 						<Section header={directors.length > 1 ? "Directors" : "Director"}>
 							{directors.map(director => (
-								<PersonaCardInfo persona={director} />
+								<PersonaCardInfo key={director.id} persona={director} />
 							))}
 						</Section>
 					)}
 					{actors && (
 						<Section header="Actors">
 							{actors.map(actor => (
-								<PersonaCardInfo persona={actor} />
+								<PersonaCardInfo key={actor.id} persona={actor} />
 							))}
 						</Section>
 					)}
 					{reviews && reviews.length > 0 && (
 						<Section header="Reviews">
 							{reviews.map(review => (
-								<Review review={review} />
+								<Review key={review.id} review={review} />
 							))}
 						</Section>
 					)}

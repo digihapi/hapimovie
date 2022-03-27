@@ -10,11 +10,13 @@ const MovieInfo = ({ movie }) => {
 		dispatch
 	} = useWatchList();
 
+	const index = watchList?.findIndex(obj => obj.id === movie.id);
+
 	const switchWatch = e => {
-		if (watchList[movie.id]) {
-			delete watchList[movie.id];
+		if (index >= 0) {
+			watchList.splice(index, 1);
 		} else {
-			watchList[movie.id] = movie;
+			watchList.push(movie);
 		}
 		dispatch({
 			type: UPDATE_WATCH_LIST,
@@ -77,8 +79,7 @@ const MovieInfo = ({ movie }) => {
 							onMouseEnter={() => setHover(true)}
 							onMouseLeave={() => setHover(false)}
 							className={`fa ${
-								(watchList[movie.id] && !hover) ||
-								(!watchList[movie.id] && hover)
+								(index >= 0 && !hover) || (index < 0 && hover)
 									? "fa-eye"
 									: "fa-eye-slash"
 							} fa-3x`}

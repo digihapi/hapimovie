@@ -5,10 +5,12 @@ const WatchListContext = createContext();
 // Actions
 const UPDATE_WATCH_LIST = "updateWatchList";
 
+const WATCH_LIST_KEY = "WATCH_LIST_V2";
+
 function watchListReducer(state, action) {
 	switch (action.type) {
 		case UPDATE_WATCH_LIST: {
-			localStorage.setItem("WATCH_LIST", JSON.stringify(action.payload));
+			localStorage.setItem(WATCH_LIST_KEY, JSON.stringify(action.payload));
 			return { watchList: action.payload };
 		}
 		default: {
@@ -19,7 +21,7 @@ function watchListReducer(state, action) {
 
 function WatchListProvider({ children }) {
 	const [state, dispatch] = useReducer(watchListReducer, {
-		watchList: JSON.parse(localStorage.getItem("WATCH_LIST") || "{}")
+		watchList: JSON.parse(localStorage.getItem(WATCH_LIST_KEY) || "[]")
 	});
 	const value = { state, dispatch };
 	return (

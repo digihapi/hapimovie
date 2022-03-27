@@ -5,11 +5,14 @@ const GoToTop = () => {
 	const [scrolled, setScrolled] = useState(false);
 
 	useEffect(() => {
-		window.addEventListener("scroll", () => {
+		const onScroll = () => {
 			const isTop = window.scrollY < 150;
 
 			isTop !== true ? setScrolled(true) : setScrolled(false);
-		});
+		};
+
+		window.addEventListener("scroll", onScroll);
+		return () => window.removeEventListener("scroll", onScroll);
 	}, []);
 
 	function handleGoToTop() {
