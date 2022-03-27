@@ -11,6 +11,8 @@ A technical task developed with React, styled-components and the API of [The Mov
 - [React](https://reactjs.org)
 - [React Router](https://reactrouter.com/)
 - [Styled Components](https://styled-components.com/)
+- [React Select](https://react-select.com/)
+- [React Beautiful DND](https://github.com/atlassian/react-beautiful-dnd)
 
 ## Services
 
