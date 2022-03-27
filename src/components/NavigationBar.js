@@ -17,6 +17,9 @@ const NavigationBar = ({ movie }) => {
 							location.pathname === HOME ? "current" : ""
 						}`}
 					/>
+					<span className={location.pathname === HOME ? "current" : ""}>
+						Home
+					</span>
 				</Link>
 				<Link to={WATCH_LIST}>
 					<i
@@ -24,9 +27,12 @@ const NavigationBar = ({ movie }) => {
 							location.pathname === WATCH_LIST ? "current" : ""
 						}`}
 					/>
+					<span className={location.pathname === WATCH_LIST ? "current" : ""}>
+						WatchList
+					</span>
 				</Link>
 				{movie && (
-					<>
+					<Link to="#">
 						<i
 							className={`fa fa-info-circle fa-2x ${
 								location.pathname !== HOME && location.pathname !== WATCH_LIST
@@ -34,7 +40,16 @@ const NavigationBar = ({ movie }) => {
 									: ""
 							}`}
 						/>
-					</>
+						<span
+							className={
+								location.pathname !== HOME && location.pathname !== WATCH_LIST
+									? "current"
+									: ""
+							}
+						>
+							{movie.title}
+						</span>
+					</Link>
 				)}
 			</div>
 			<img src={TMDBLogo} alt="TMDB logo" />

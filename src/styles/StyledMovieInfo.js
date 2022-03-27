@@ -57,7 +57,7 @@ export const StyledMovieInfo = styled.div`
 
 	.movieinfo-text {
 		font-family: Arial, Helvetica, sans-serif;
-		padding: 40px;
+		padding: 40px 40px 0px 40px;
 		color: #fff;
 
 		h1 {
@@ -78,7 +78,11 @@ export const StyledMovieInfo = styled.div`
 	}
 
 	.icon-content {
+		// position: absolute;
+		// bottom: 0px;
+		// width: 100%;
 		display: flex;
+		flex-direction: row;
 		justify-content: space-between;
 		background-color: #000;
 		padding: 10px 40px;
