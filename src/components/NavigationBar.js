@@ -6,11 +6,12 @@ import constants from "../config/constants";
 const NavigationBar = ({ movie }) => {
 	const location = useLocation();
 	const { HOME, WATCH_LIST } = constants.APP.PATH;
+	const { DEFAULT_YEAR } = constants.API;
 
 	return (
 		<StyledNavigationBar>
 			<div className="navigation">
-				<Link to={HOME}>
+				<Link to={`${HOME}?primary_release_year=${DEFAULT_YEAR}`}>
 					<i
 						className={`fa fa-home fa-2x ${
 							location.pathname === HOME ? "current" : ""

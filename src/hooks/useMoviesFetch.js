@@ -18,7 +18,7 @@ export const useMoviesFetch = () => {
 		} = constants.API;
 
 		const query = searchParams.get("query");
-		const sortBy = searchParams.get("sort_by") || "";
+		const sortBy = searchParams.get("sort_by");
 
 		const fetchMovies = async url => {
 			const page = searchParams.get("page") || 1;
