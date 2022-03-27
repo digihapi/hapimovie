@@ -22,6 +22,10 @@ export const StyledMovieCardInfo = styled.div`
 		img {
 			width: 100%;
 		}
+
+		@media screen and (max-width: 768px) {
+			width: 100%;
+		}
 	}
 
 	.info-text {
@@ -32,36 +36,34 @@ export const StyledMovieCardInfo = styled.div`
 		color: #fff;
 		padding: 10px;
 		text-decoration: "none";
+		text-align: center;
 
 		h1 {
 			font-size: 22px;
-			text-decoration: "none";
-
 			margin: 0;
 
-			@media screen and (max-width: 500px) {
+			@media screen and (min-width: 500px) and (max-width: 768px) {
 				font-size: 28px !important;
 			}
 		}
 
 		h3 {
 			font-size: 16px;
+			font-style: italic;
 			line-height: 0;
 			margin-top: 20px;
 		}
 	}
 
-	.fa-eye-content {
-		position: relative;
-		width: 0;
-		height: 0;
+	.icons-content {
+		background-color: #000;
+		display: flex;
+		justify-content: space-between;
+		padding: 10px 20px;
 	}
 
 	.fa-eye,
 	.fa-eye-slash {
-		position: absolute;
-		bottom: 30px;
-		left: 250px;
 		color: #fff;
 	}
 
@@ -89,10 +91,6 @@ export const StyledMovieCardInfo = styled.div`
 		font-weight: 800;
 		border-radius: 35px;
 		margin: 0px 0 0 0;
-	}
-
-	.flex1 {
-		flex: 1;
 	}
 
 	@keyframes animateMovieinfo {

@@ -2,12 +2,12 @@ import styled from "styled-components";
 
 export const StyledSearchBar = styled.div`
 	width: 100%;
-	height: 105px;
+	min-height: 60px;
 	background: #000;
-	padding: 25px 20px 0px 20px;
 	box-sizing: border-box;
 	color: #fff;
 	animation: animateBar 1s;
+	align-items: center;
 	margin-top: 70px;
 
 	@keyframes animateBar {
@@ -21,7 +21,6 @@ export const StyledSearchBar = styled.div`
 `;
 
 export const StyledSearchBarContent = styled.div`
-  max-width: 1280px;
   width: 100%;
   height: 55px;
   background: transparent
@@ -38,9 +37,18 @@ export const StyledSearchBarContent = styled.div`
     z-index: 800;
   }
 
+  .fa-times {
+    position: absolute;
+    right: 20px;
+    top: 12px;
+    color: #fff;
+    z-index: 800;
+    cursor: pointer;
+  }
+
   input {
     font-family: 'Roboto', sans-serif;
-    font-size: 28px;
+    font-size: 22px;
     position: absolute;
     border-bottom:1px solid #000;
     left: 0px;
@@ -67,10 +75,6 @@ export const StyledSearchBarContent = styled.div`
     
     ::-ms-input-placeholder { /* Microsoft Edge */
       color: #fff;
-    }
-
-    @media screen and (max-width: 720px) {
-      font-size: 28px;
     }
   }
 `;

@@ -38,38 +38,31 @@ const MovieCardInfo = ({ movie }) => {
 		<StyledMovieCardInfo>
 			<Link to={`/details/${movie.id}`} style={{ textDecoration: "none" }}>
 				<div className="info-content">
-					<div className="image-content">
-						<img
-							src={
-								movie.poster_path
-									? `${HOST}${DEFAULT}${movie.poster_path}`
-									: NO_POSTER
-							}
-							loading="lazy"
-							alt={movie.title}
+					<img
+						src={
+							movie.poster_path
+								? `${HOST}${DEFAULT}${movie.poster_path}`
+								: NO_POSTER
+						}
+						loading="lazy"
+						alt={movie.title}
+					/>
+					<div className="icons-content">
+						<div className="vote">{movie.vote_average}</div>
+						<i
+							onClick={switchWatch}
+							onMouseEnter={() => setHover(true)}
+							onMouseLeave={() => setHover(false)}
+							className={`fa ${
+								(index >= 0 && !hover) || (index < 0 && hover)
+									? "fa-eye"
+									: "fa-eye-slash"
+							} fa-3x`}
 						/>
-						<div className="fa-eye-content">
-							<i
-								onClick={switchWatch}
-								onMouseEnter={() => setHover(true)}
-								onMouseLeave={() => setHover(false)}
-								className={`fa ${
-									(index >= 0 && !hover) || (index < 0 && hover)
-										? "fa-eye"
-										: "fa-eye-slash"
-								} fa-3x`}
-							/>
-						</div>
 					</div>
 					<div className="info-text">
 						<h1>{movie.title}</h1>
 						<h3>{new Date(movie.release_date).toLocaleDateString()}</h3>
-						<div className="flex1" />
-						<div className="vote-content">
-							<div>
-								<div className="vote">{movie.vote_average}</div>
-							</div>
-						</div>
 					</div>
 				</div>
 			</Link>

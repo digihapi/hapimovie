@@ -26,6 +26,12 @@ export const StyledMovies = styled.div`
 			min-width: 20px;
 			font-family: "Roboto", sans-serif;
 			font-size: 42px;
+			color: #3c3d3e;
+			border: none;
+			:hover {
+				border: 1px solid #000;
+				border-radius: 4px;
+			}
 			@media screen and (max-width: 500px) {
 				font-size: 22px;
 			}
